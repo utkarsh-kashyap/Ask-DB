@@ -2,6 +2,9 @@
 ![Oracle](https://img.shields.io/badge/DB-OracleXE-orange)
 ![LLM](https://img.shields.io/badge/LLM-GPT4o--mini-green)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Utkarsh%20Kashyap-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/utkarsh--kashyap/)
+![Version](https://img.shields.io/github/v/tag/utkarsh-kashyap/Ask-DB)
+![Issues](https://img.shields.io/github/issues/utkarsh-kashyap/Ask-DB)
+![PRs](https://img.shields.io/github/issues-pr/utkarsh-kashyap/Ask-DB)
 # 🧠 Ask-DB: Natural Language → SQL → Oracle → JSON
 
 Ask-DB is an **enterprise-grade framework** that converts **plain English requests** into **validated SQL queries**, executes them safely on **Oracle DB**, and saves results in **JSON**.
