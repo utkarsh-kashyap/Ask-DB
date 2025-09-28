@@ -9,7 +9,7 @@ Ask-DB is an **enterprise-grade framework** that converts **plain English reques
 It’s designed for:
 - Data teams who want **ad-hoc queries** without writing SQL.  
 - Enterprises that need **guardrails and safety** when exposing DBs to LLMs.  
-- Developers who want a **portable, schema-aware demo** (works with both OpenAI and internal company LLMs).  
+- Developers who want a **portable, schema-aware demo** (works with both OpenAI and internal custom LLMs).  
 
 ---
 
@@ -35,7 +35,7 @@ flowchart TD
 - 📑 Schema extraction with filters  
 - 💡 Example queries to guide LLM  
 - 🛡️ Guardrails: safe SQL only  
-- 👨‍💻 Dual-mode: OpenAI or Company LLM  
+- 👨‍💻 Dual-mode: OpenAI or Custom LLM  
 - 📊 Token & cost tracking per request  
 - 📂 JSON output with timestamps  
 - 📝 Audit logs for governance  
@@ -65,7 +65,7 @@ Python 3.9+
 
 Oracle XE (local) or Oracle Client libraries (for enterprise DB access)
 
-Access to an LLM API (OpenAI API key, or internal company endpoint)
+Access to an LLM API (OpenAI API key, or internal custom endpoint)
 
 # 2️⃣ Install
 python -m venv venv
@@ -83,7 +83,7 @@ ORACLE_USER=demo_user
 ORACLE_PASSWORD=demo_pass
 ORACLE_DSN=localhost:1521/XEPDB1
 
-LLM (OpenAI or company)
+LLM (OpenAI or internal LLM)
 LLM_API_URL=https://api.openai.com/v1/chat/completions
 LLM_API_KEY=sk-your-api-key
 LLM_MODEL=gpt-4o-mini
@@ -119,7 +119,7 @@ Enter your request: Show all accounts with balance > 3000`
 
 Results saved as JSON in output/:
 
-output/result_20250928_231649.json
+`output/result_20250928_231649.json`
 
 
 Example:
@@ -181,13 +181,13 @@ Update llm_client.py if using another model.
 
 Helps prevent runaway costs in enterprise setups.
 
-# 🌐 Switching Between OpenAI & Company LLM
+# 🌐 Switching Between OpenAI & Internal LLM
 
 For LLM config:
 
 
-LLM_API_URL=https://internal.company.llm/api
-LLM_API_KEY=company-secret-key
+LLM_API_URL=https://internal.custom.llm/api
+LLM_API_KEY=internal-secret-key
 LLM_MODEL=custom-model-v1
 
 
@@ -199,19 +199,20 @@ No code changes required — just swap .env.
 
 ✅ Limit schema extraction (SCHEMA_TABLES or SCHEMA_MAX_TABLES).
 
-✅ Apply row limits (ROWNUM <= N) in db_fetcher.py to avoid huge dumps.
+✅ Apply row limits (ROWNUM <= N) in `db_fetcher.py` to avoid huge dumps.
 
 ✅ Monitor token usage & costs via built-in tracker.
 
-✅ Log all queries & results (demo.log) for audits.
+✅ Log all queries & results (demo.log) for audits. 
 
 📈 Example Run
-$ python main.py "List all transactions in last 30 days"
---- GENERATED SQL ---
-SELECT * FROM TRANSACTIONS WHERE TRANSACTION_DATE >= ADD_MONTHS(SYSDATE, -1)
+`$ python main.py "List all transactions in last 30 days"`
 
---- FINAL SQL ---
-SELECT * FROM TRANSACTIONS WHERE TRANSACTION_DATE >= ADD_MONTHS(SYSDATE, -1)
+📈 GENERATED SQL 
+`SELECT * FROM TRANSACTIONS WHERE TRANSACTION_DATE >= ADD_MONTHS(SYSDATE, -1)` 
+
+📈 FINAL SQL 
+`SELECT * FROM TRANSACTIONS WHERE TRANSACTION_DATE >= ADD_MONTHS(SYSDATE, -1)` 
 
 ✅ Results saved to: output/result_20250928_223501.json (47 rows)
 
@@ -237,4 +238,4 @@ Keep sensitive data (API keys, DB passwords) in .env, never commit them.
 
 Supports Oracle XE for local testing, and Oracle Prod DB in enterprise.
 
-Compatible with OpenAI API and custom company LLM endpoints.
+Compatible with OpenAI API and custom LLM endpoints.
