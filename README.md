@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/github/v/tag/utkarsh-kashyap/Ask-DB)
 ![Issues](https://img.shields.io/github/issues/utkarsh-kashyap/Ask-DB)
 ![PRs](https://img.shields.io/github/issues-pr/utkarsh-kashyap/Ask-DB)
-# 🧠 Ask-DB: Natural Language → SQL → Oracle → JSON
+# 🧠 Ask-DB: Natural Language → SQL Query → Fetch Oracle Data→ JSON
 
 Ask-DB is an **enterprise-grade framework** that converts **plain English requests** into **validated SQL queries**, executes them safely on **Oracle DB**, and saves results in **JSON**.
 
