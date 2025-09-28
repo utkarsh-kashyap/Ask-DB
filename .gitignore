@@ -1,0 +1,59 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ----------------------
+# Project-specific
+# ----------------------
+# Environment configs (sensitive)
+.env
+
+# Logs
+*.log
+demo.log
+
+# Output results
+/output/
+
+# Schema and configs (regenerate when needed)
+schema.json
+
+# Cache & temp
+*.sqlite
+*.db
+*.DS_Store
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# ----------------------
+# IDE / Editor
+# ----------------------
+.vscode/
+.idea/
+*.iml
+
+# ----------------------
+# OS files
+# ----------------------
+Thumbs.db
+.DS_Store

@@ -1,0 +1,30 @@
+{
+  "output_folder": "output",
+  "default_query": "SELECT * FROM MEMBERS  WHERE ROWNUM <= 10",
+  "example_queries": {
+    "activated_members": "SELECT * FROM members WHERE status='activated';",
+    "inactive_members": "SELECT * FROM members WHERE status='inactive';",
+    "members_with_email_catchall": "SELECT * FROM members WHERE email LIKE '%@catchallmail.com';",
+    "members_signup_this_month": "SELECT * FROM members WHERE signup_date >= ADD_MONTHS(SYSDATE, -1);",
+    "all_accounts": "SELECT * FROM accounts;",
+    "accounts_with_balance_gt_3000": "SELECT * FROM accounts WHERE balance > 3000;",
+    "accounts_by_type": "SELECT account_type, COUNT(*) FROM accounts GROUP BY account_type;",
+    "member_accounts_join": "SELECT m.name, a.account_type, a.balance FROM members m JOIN accounts a ON m.member_id = a.member_id;",
+    "transactions_last_30_days": "SELECT * FROM transactions WHERE transaction_date >= ADD_MONTHS(SYSDATE, -1);",
+    "transactions_credit_only": "SELECT * FROM transactions WHERE transaction_type='Credit';",
+    "transactions_debit_only": "SELECT * FROM transactions WHERE transaction_type='Debit';",
+    "total_balance_per_member": "SELECT m.name, SUM(a.balance) as total_balance FROM members m JOIN accounts a ON m.member_id=a.member_id GROUP BY m.name;",
+    "avg_transaction_amount": "SELECT AVG(amount) as avg_amount FROM transactions;",
+    "largest_transaction": "SELECT * FROM transactions WHERE amount = (SELECT MAX(amount) FROM transactions);",
+    "members_with_multiple_accounts": "SELECT m.name, COUNT(a.account_id) as account_count FROM members m JOIN accounts a ON m.member_id = a.member_id GROUP BY m.name HAVING COUNT(a.account_id) > 1;",
+    "recent_members": "SELECT * FROM members WHERE signup_date >= SYSDATE - 30;",
+    "recent_transactions_per_account": "SELECT account_id, MAX(transaction_date) as last_transaction FROM transactions GROUP BY account_id;",
+    "members_and_transactions_join": "SELECT m.name, t.amount, t.transaction_type, t.transaction_date FROM members m JOIN accounts a ON m.member_id=a.member_id JOIN transactions t ON a.account_id=t.account_id;",
+    "high_balance_accounts": "SELECT * FROM accounts WHERE balance > (SELECT AVG(balance) FROM accounts);",
+    "members_with_email_gmail": "SELECT * FROM members WHERE email LIKE '%@gmail.com';"
+  },
+  "prompt_settings": {
+    "max_tokens": 1024,
+    "temperature": 0.0
+  }
+}
